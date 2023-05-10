@@ -26,7 +26,7 @@ public class ClienteDAOImpl implements ClienteDAO {
 		this.conn = conn;
 	}
 
-	// Mï¿½todo que se encarga de cerrar la conexiï¿½n con la base de datos
+	// Método que se encarga de cerrar la conexión con la base de datos
 	public void close() throws SQLException {
 		if (this.conn != null) {
 			this.conn.close();
@@ -51,7 +51,7 @@ public class ClienteDAOImpl implements ClienteDAO {
 			throw new DAOException("Error al insertar el cliente en la base de datos: ", e);
 		} finally {
 			if (statement != null) {
-				// Liberamos los recursos asignados al statement y a la conexiï¿½n jdbc
+				// Liberamos los recursos asignados al statement y a la conexión jdbc
 				statement.close();
 				this.close();
 			}
@@ -104,7 +104,7 @@ public class ClienteDAOImpl implements ClienteDAO {
 			throw new DAOException("Error al obtener la cuota anual de un tipo de cliente desde bd: ", e);
 		} finally {
 			if (statement != null) {
-				// Liberamos los recursos asignados al statement y a la conexiï¿½n jdbc
+				// Liberamos los recursos asignados al statement y a la conexión jdbc
 				statement.close();
 			}
 		}
@@ -135,7 +135,7 @@ public class ClienteDAOImpl implements ClienteDAO {
 			throw new DAOException("Error al obtener el descuento de envio de un tipo de cliente desde bd: ", e);
 		} finally {
 			if (statement != null) {
-				// Liberamos los recursos asignados al statement y a la conexiï¿½n jdbc
+				// Liberamos los recursos asignados al statement y a la conexión jdbc
 				statement.close();
 			}
 		}
@@ -165,7 +165,7 @@ public class ClienteDAOImpl implements ClienteDAO {
 			throw new DAOException("Error al obtener el id de un tipo de cliente desde bd: ", e);
 		} finally {
 			if (statement != null) {
-				// Liberamos los recursos asignados al statement y a la conexiï¿½n jdbc
+				// Liberamos los recursos asignados al statement y a la conexión jdbc
 				statement.close();
 			}
 		}
@@ -194,7 +194,7 @@ public class ClienteDAOImpl implements ClienteDAO {
 					String tipo_cliente = rs.getString("tipos_cliente.descripcion");
 					float cuota_anual = rs.getFloat("tipos_cliente.cuota_anual");
 					float descuento_envio = rs.getFloat("tipos_cliente.descuento_envio");
-					// Instanciamos el cliente segï¿½n su tipo
+					// Instanciamos el cliente según su tipo
 					try {
 						if (tipo_cliente.equals(CLIENTE_ESTANDAR)) {
 							cliente = new ClienteEstandar(email, nombre, domicilio, nif, tipo_cliente, cuota_anual,
@@ -203,13 +203,13 @@ public class ClienteDAOImpl implements ClienteDAO {
 							cliente = new ClientePremium(email, nombre, domicilio, nif, tipo_cliente, cuota_anual,
 									descuento_envio);
 						} else {
-							// TODO: POSIBLE CASO PARA LANZAR UNA EXCEPCIï¿½N PERSSONALIZADA
+							// TODO: POSIBLE CASO PARA LANZAR UNA EXCEPCIÓN PERSSONALIZADA
 							// (Se tiene que en las tablas de bd un cliente se ha relacionado con un tipo
-							// que no estï¿½ contemplando en el modelo)
+							// que no está contemplando en el modelo)
 							cliente.toString();
 							System.out
 									.println("El cliente tiene asignado un tipo de cliente no soportado por el modelo. "
-											+ "Debe ser \"estandar\" o \"premium\", ya que son los ï¿½nicos tipos de cliente soportados por el momento."
+											+ "Debe ser \"estandar\" o \"premium\", ya que son los únicos tipos de cliente soportados por el momento."
 											+ " Se aconseja revisar la tabla clientes y tipos_cliente de la base de datos para hacer la limpieza de datos correspondiente.");
 						}
 
@@ -225,7 +225,7 @@ public class ClienteDAOImpl implements ClienteDAO {
 			throw new DAOException("Error al obtener el cliente de la base de datos: ", e);
 		} finally {
 			if (statement != null) {
-				// Liberamos los recursos asignados al statement y a la conexiï¿½n jdbc
+				// Liberamos los recursos asignados al statement y a la conexión jdbc
 				statement.close();
 			}
 		}
@@ -254,7 +254,7 @@ public class ClienteDAOImpl implements ClienteDAO {
 					String tipo_cliente = rs.getString("tipos_cliente.descripcion");
 					float cuota_anual = rs.getFloat("tipos_cliente.cuota_anual");
 					float descuento_envio = rs.getFloat("tipos_cliente.descuento_envio");
-					// Instanciamos el cliente segï¿½n su tipo
+					// Instanciamos el cliente según su tipo
 					try {
 						if (tipo_cliente.equals(CLIENTE_ESTANDAR)) {
 							cliente = new ClienteEstandar(email, nombre, domicilio, nif, tipo_cliente, cuota_anual,
@@ -265,13 +265,13 @@ public class ClienteDAOImpl implements ClienteDAO {
 									descuento_envio);
 							clientes.add(cliente);
 						} else {
-							// TODO: POSIBLE CASO PARA LANZAR UNA EXCEPCIï¿½N PERSSONALIZADA
+							// TODO: POSIBLE CASO PARA LANZAR UNA EXCEPCIÓN PERSSONALIZADA
 							// (Se tiene que en las tablas de bd un cliente se ha relacionado con un tipo
-							// que no estï¿½ contemplando en el modelo)
+							// que no está contemplando en el modelo)
 							cliente.toString();
 							System.out
 									.println("El cliente tiene asignado un tipo de cliente no soportado por el modelo. "
-											+ "Debe ser \"estandar\" o \"premium\", ya que son los ï¿½nicos tipos de cliente soportados por el momento."
+											+ "Debe ser \"estandar\" o \"premium\", ya que son los únicos tipos de cliente soportados por el momento."
 											+ " Se aconseja revisar la tabla clientes y tipos_cliente de la base de datos para hacer la limpieza de datos correspondiente.");
 						}
 
@@ -287,7 +287,7 @@ public class ClienteDAOImpl implements ClienteDAO {
 			throw new DAOException("Error al obtener la lista de clientes de la base de datos: ", e);
 		} finally {
 			if (statement != null) {
-				// Liberamos los recursos asignados al statement y a la conexiï¿½n jdbc
+				// Liberamos los recursos asignados al statement y a la conexión jdbc
 				statement.close();
 				this.close();
 			}
